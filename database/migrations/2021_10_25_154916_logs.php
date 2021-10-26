@@ -13,7 +13,12 @@ class Logs extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('logs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string("libelle");
+            $table->date("dateLog");
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class Logs extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('logs');
     }
 }

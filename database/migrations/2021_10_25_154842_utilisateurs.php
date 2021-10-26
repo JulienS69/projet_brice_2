@@ -13,7 +13,16 @@ class Utilisateurs extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('utilisateurs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string("nom");
+            $table->string("prenom");
+            $table->string("email");
+            $table->string("mot_de_passe");
+            $table->string("tel");
+            $table->boolean("admin")->default(false);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +32,6 @@ class Utilisateurs extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('utilisateurs');
     }
 }

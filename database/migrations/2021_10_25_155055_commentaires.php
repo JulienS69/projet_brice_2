@@ -13,7 +13,12 @@ class Commentaires extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('commentaires', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date("date");
+            $table->string('libelle');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class Commentaires extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('commentaires');
     }
 }

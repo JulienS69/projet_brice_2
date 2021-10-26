@@ -13,7 +13,11 @@ class NotesArticle extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('notesArticle', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string("libelle");
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class NotesArticle extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('notesArticle');
     }
 }
