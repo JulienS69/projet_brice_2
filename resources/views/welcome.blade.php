@@ -402,7 +402,7 @@
     @if (Route::has('login'))
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
 @auth
-        <a href="{{ url('/home') }}" class="text-sm bg-gray-100 bg-red-50 underline" style="color: #1d68a7">Accueil</a>
+        <a href="{{ url('/dashboard') }}" class="text-sm bg-gray-100 bg-red-50 underline" style="color: #1d68a7">Accueil</a>
             @else
         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline" style="color: #1d68a7">Se
                     connecter</a>
@@ -422,7 +422,7 @@
     @if (Route::has('login'))
         <div class="text-box">
             @auth
-                <a href="{{ url('/home') }}" class="btn btn-white btn-animate" style="margin-left: 175px;
+                <a href="{{ url('/dashboard') }}" class="btn btn-white btn-animate" style="margin-left: 175px;
             margin-top: -1vh;">Accueil</a>
         </div>
         <div class="text-box">
