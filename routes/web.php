@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatégorieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+/* Route N°3 */
+Route::get('/categorie', [CatégorieController::class, 'index'])->name('categorie.index')->middleware(['auth'])->name('dashboard');
+
+
 
 require __DIR__.'/auth.php';

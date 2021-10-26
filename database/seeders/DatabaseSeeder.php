@@ -26,5 +26,10 @@ class DatabaseSeeder extends Seeder
 
             ]
         );
+        DB::table('categories')->insert(
+            [
+                'nom' => 'Jeux-Video',
+            ]
+        );
     }
 }
