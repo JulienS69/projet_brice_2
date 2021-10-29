@@ -1,9 +1,13 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+    <x-slot name="header" class="block">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight pr-96 inline-block">
+            {{ __('add') }}
         </h2>
+        <button class="font-semibold text-xl text-gray-800 leading-tight pl-96 ml-22 inline-block" type="submit" href="Categorie">
+           Catégorie
+        </button>
     </x-slot>
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

@@ -22,10 +22,29 @@
 
 
 <!-- Page Heading -->
-
+    <x-slot name="header" class="block">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight pr-96 inline-block">
+            {{ __('add') }}
+        </h2>
+        <button class="font-semibold text-xl text-gray-800 leading-tight pl-96 ml-22 inline-block" type="submit" href="Categorie">
+            Catégorie
+        </button>
+    </x-slot>
     <!-- Page Content -->
+    @if(Auth::user()->admin)
+    <div class="container">
+        <a href="{{ route('addCateg') }}">
+            Ajout Catégorie
+        </a>
+    </div>
+    @endif
     <main>
-        {{ $catégorie }}
+        @foreach($catégorie as $uneCategorie)
+            <tr>
+                <td class="mx-auto"><input style="text-align: center" class="form-control" type="text" value="{{$uneCategorie->nom}}" name="visiteurid" readonly></td>
+            </tr>
+        @endforeach
+
     </main>
 </div>
 </body>

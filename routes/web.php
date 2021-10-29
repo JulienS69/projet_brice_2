@@ -1,6 +1,6 @@
-<?php
+ <?php
 
-use App\Http\Controllers\CatégorieController;
+use App\Http\Controllers\AddCategorieController;use App\Http\Controllers\CatégorieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +25,8 @@ Route::get('/dashboard', function () {
 /* Route N°3 */
 Route::get('/categorie', [CatégorieController::class, 'index'])->name('categorie.index')->middleware(['auth'])->name('dashboard');
 
+Route::get('/categorie/addCateg',[AddCategorieController::class, 'index'])->name('addCateg');
 
+Route::post('/categorie/addCateg', [AddCategorieController::class, 'store'])->name('categorie');
 
 require __DIR__.'/auth.php';
