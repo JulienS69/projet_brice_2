@@ -42,7 +42,7 @@
     <main>
         @foreach($catégories as $categorie)
             <tr>
-                <td class="mx-auto"><input style="text-align: center" class="form-control" type="text" value="{{$categorie->nom}}" name="visiteurid" readonly></td>
+                <td class="mx-auto"><input style="text-align: center" class="form-control" type="text" value="{{$categorie->nom}}" name="visiteurid" readonly ><a href="{{route('showArticleFromCateg' , ["id" => $categorie->id])}}">Cliquez ici pour en savoir plus</a></td>
                 @if(Auth::user()->admin)
                     <form action="{{ route("delete_categ", ["id" => $categorie->id]) }}" method="post">
                         @csrf

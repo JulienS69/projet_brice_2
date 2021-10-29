@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catégorie;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 
 class AddCategorieController
@@ -14,7 +14,7 @@ class AddCategorieController
     }
 
     public function store(Request $request){
-        Catégorie::create(['nom'=>$request->nom]);
+        Categorie::create(['nom'=>$request->nom]);
         return redirect('/categorie');
     }
 

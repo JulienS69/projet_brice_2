@@ -45,6 +45,9 @@ Route::get('/article', [ArticleController::class, 'index'])->name('article');
  /* Route N°9 */
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('showArticle');
 
+ /* Route N°9 */
+ Route::get('/categorie/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');
+
  /* Route N°10 */
 Route::delete('/categorie/{id}', [CatégorieController::class, 'destroy'])->name('delete_categ');
 require __DIR__.'/auth.php';

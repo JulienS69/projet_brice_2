@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\Catégorie;
+use App\Models\Categorie;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,7 +19,7 @@ class ArticleController extends Controller
     public function show(Request $request)
     {
         $idArticle = $request->input('idArticle');
-        $showArticle = Article::addSelect('titre', 'date', 'libelle', 'image_article')
+        $articles = Article::addSelect('titre', 'date', 'libelle', 'image_article')
 //            ->where('id', $idArticle)
             ->get();
 
@@ -27,7 +27,7 @@ class ArticleController extends Controller
 //            ->where('id', $idArticle)
 //            ->get();
 
-        return view('showArticle', compact("showArticle"));
+        return view('showArticle', compact("articles"));
     }
 }
 

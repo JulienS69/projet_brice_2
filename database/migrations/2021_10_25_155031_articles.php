@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Categorie;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,7 +22,8 @@ class Articles extends Migration
             $table->binary("image_article");
             $table->date("date");
             $table->string("libelle");
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->onDelete("cascade");;
+            $table->foreignIdFor(Categorie::class)->onDelete("cascade");;
             $table->timestamps();
         });
 

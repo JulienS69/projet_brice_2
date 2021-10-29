@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CatégorieController;
-use App\Models\Catégorie;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/categorie', function(){$json=Catégorie::with("articles")->get(); return response()->json($json);});
+Route::get('/categorie', function(){$json=Categorie::with("articles")->get(); return response()->json($json);});

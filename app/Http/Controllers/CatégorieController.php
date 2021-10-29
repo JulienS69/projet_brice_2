@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catégorie;
+use App\Models\Article;
+use App\Models\Categorie;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,26 +11,31 @@ class CatégorieController extends Controller
 {
     public function index()
     {
-        $catégories = Catégorie::all();
+        $catégories = Categorie::all();
         return view('categorie', compact("catégories"));
     }
 
     public function destroy($id){
-        $task = Catégorie::findOrFail($id);
+        $task = Categorie::findOrFail($id);
         $task->delete();
         return redirect("/categorie");
     }
 
     public function showCateg($id){
-        $search= Catégorie::find($id);
+        $search= Categorie::find($id);
         return view("editCateg", compact("search"));
     }
 
     public function updateCateg($id, Request $request){
-        Catégorie::findOrFail($id)->update([
+        Categorie::findOrFail($id)->update([
             'nom'=>$request->NomCateg
         ]);
         return redirect(route("dashboard"));
 
+    }
+
+    public function showArticleFromCateg($id, Request $request){
+            $articles = Article::all()->where('id', $id);
+            return view('article', compact("articles"));
     }
 }

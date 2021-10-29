@@ -29,11 +29,13 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert(
             [
                 'nom' => 'Jeux-Video',
+                'user_id' => 1,
             ]
         );
         DB::table('categories')->insert(
             [
                 'nom' => 'Aventure',
+                'user_id' => 1,
             ]
         );
 
@@ -44,6 +46,7 @@ class DatabaseSeeder extends Seeder
                 'date' => '2018-09-24',
                 'libelle' => 'test',
                 'user_id' => 1,
+                'categorie_id' => 1,
             ]
         );
         DB::table('articles')->insert(
@@ -53,6 +56,7 @@ class DatabaseSeeder extends Seeder
                 'date' => '2018-09-25',
                 'libelle' => 'sddsddddd',
                 'user_id' => 1,
+                'categorie_id' => 2,
 
             ]
         );
