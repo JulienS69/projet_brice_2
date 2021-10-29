@@ -39,9 +39,16 @@
     </div>
     @endif
     <main>
-        @foreach($catégorie as $uneCategorie)
+        @foreach($catégories as $categorie)
             <tr>
-                <td class="mx-auto"><input style="text-align: center" class="form-control" type="text" value="{{$uneCategorie->nom}}" name="visiteurid" readonly></td>
+                <td class="mx-auto"><input style="text-align: center" class="form-control" type="text" value="{{$categorie->nom}}" name="visiteurid" readonly></td>
+                @if(Auth::user()->admin)
+                    <form action="{{ route("delete_categ", ["id" => $categorie->id]) }}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit"><img src="../images/corbeille.png"></button>
+                    </form>
+                @endif
             </tr>
         @endforeach
 

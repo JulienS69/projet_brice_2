@@ -28,5 +28,5 @@ Route::get('/categorie', [CatégorieController::class, 'index'])->name('categori
 Route::get('/categorie/addCateg',[AddCategorieController::class, 'index'])->name('addCateg');
 
 Route::post('/categorie/addCateg', [AddCategorieController::class, 'store'])->name('categorie');
-
+Route::delete('/categorie/{id}', [CatégorieController::class, 'destroy'])->name('delete_categ');
 require __DIR__.'/auth.php';

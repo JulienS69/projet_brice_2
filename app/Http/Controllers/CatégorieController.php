@@ -10,8 +10,17 @@ class CatégorieController extends Controller
 {
     public function index()
     {
-         $catégorie = Catégorie::addSelect(['nom'])
-            ->get();
-        return view('categorie', compact("catégorie"));
+        $catégories = Catégorie::all();
+        return view('categorie', compact("catégories"));
+    }
+
+    public function destroy($id){
+        $task = Catégorie::findOrFail($id);
+        $task->delete();
+        return redirect("/categorie");
+    }
+
+    public function edit($id){
+        return view("editCateg");
     }
 }
