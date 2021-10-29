@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class Articles extends Migration
@@ -16,10 +18,14 @@ class Articles extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string("titre");
+            $table->binary("image_article");
             $table->date("date");
             $table->string("libelle");
+            $table->foreignIdFor(User::class);
             $table->timestamps();
         });
+
+//        DB::unprepared("ALTER TABLE `articles`ADD FOREIGN KEY (users.id) REFERENCES `users`(id)");
     }
 
     /**

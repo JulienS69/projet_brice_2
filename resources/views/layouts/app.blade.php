@@ -20,7 +20,6 @@
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-
             <!-- Page Heading -->
                 <header class="bg-white shadow">
                     <div class="max-w-5xl mx-auto py-6 sm:px-6 lg:px-8">

@@ -15,4 +15,8 @@ class Catégorie extends Model
         'id',
         'nom',
     ];
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
 }
