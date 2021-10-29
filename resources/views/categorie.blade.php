@@ -34,8 +34,9 @@
     @if(Auth::user()->admin)
     <div class="container">
         <a href="{{ route('addCateg') }}">
-            Ajout Catégorie
+            Ajouter une catégorie
         </a>
+
     </div>
     @endif
     <main>
@@ -47,6 +48,10 @@
                         @csrf
                         @method("DELETE")
                         <button type="submit"><img src="../images/corbeille.png"></button>
+                    </form>
+                    <form action="{{ route("showCateg", ["id" => $categorie->id]) }}" method="post">
+                        @csrf
+                        <button type="submit"><img src="../images/bouton-modifier.png"></button>
                     </form>
                 @endif
             </tr>

@@ -20,7 +20,16 @@ class CatégorieController extends Controller
         return redirect("/categorie");
     }
 
-    public function edit($id){
-        return view("editCateg");
+    public function showCateg($id){
+        $search= Catégorie::find($id);
+        return view("editCateg", compact("search"));
+    }
+
+    public function updateCateg($id, Request $request){
+        Catégorie::findOrFail($id)->update([
+            'nom'=>$request->NomCateg
+        ]);
+        return redirect(route("dashboard"));
+
     }
 }

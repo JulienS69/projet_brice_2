@@ -20,13 +20,17 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('home');
 
 /* Route N°3 */
-Route::get('/categorie', [CatégorieController::class, 'index'])->name('categorie.index')->middleware(['auth'])->name('dashboard');
+Route::get('/categorie', [CatégorieController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/categorie/addCateg',[AddCategorieController::class, 'index'])->name('addCateg');
 
 Route::post('/categorie/addCateg', [AddCategorieController::class, 'store'])->name('categorie');
+Route::post('/categorie/editCateg/{id}',[CatégorieController::class, 'showCateg'])->name('showCateg');
+Route::put('/categorie/editCateg/{id}',[CatégorieController::class, 'updateCateg'])->name('updateCateg');
+
+
 Route::delete('/categorie/{id}', [CatégorieController::class, 'destroy'])->name('delete_categ');
 require __DIR__.'/auth.php';
