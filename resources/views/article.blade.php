@@ -35,7 +35,7 @@
                 <th>Titre</th>
                 <th>Liens vers l'article</th>
             </tr>
-            @foreach($articles as $unArticle)
+            @foreach($article as $unArticle)
                 <tr>
                     <td class="mx-auto"><input style="text-align: center" class="form-control" type="text" value="{{$unArticle->id}}" name="idArticle" readonly></td>
                     <td class="mx-auto"><input style="text-align: center" class="form-control" type="text" value="{{$unArticle->titre}}" name="nom" readonly>

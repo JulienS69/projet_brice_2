@@ -35,7 +35,7 @@ class CatégorieController extends Controller
     }
 
     public function showArticleFromCateg($id, Request $request){
-            $articles = Article::all()->where('id', $id);
-            return view('article', compact("articles"));
+            $article = Article::all()->where('id', $id);
+            return view('article', compact("article"));
     }
 }
