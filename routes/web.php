@@ -22,10 +22,10 @@ Route::get('/', function () {
  /* Route N°2 */
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('home');
+})->middleware(['auth'])->name('dashboard');
 
 /* Route N°3 */
-Route::get('/categorie', [CatégorieController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/categorie', [CatégorieController::class, 'index'])->middleware(['auth'])->name('categorie');
 
  /* Route N°4 */
 Route::get('/categorie/addCateg',[AddCategorieController::class, 'index'])->name('addCateg');

@@ -13,16 +13,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Accueil') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link : href="{{ url('/categorie') }}" :active="request()->routeIs('categorie.index')">
+                    <x-nav-link : href="{{ url('/categorie') }}" :active="request()->routeIs('categorie')">
                         {{ __('Categories') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link : href="{{ url('/article') }}" :active="request()->routeIs('article.index')">
+                    <x-nav-link : href="{{ url('/article') }}" :active="request()->routeIs('article')">
                         {{ __('Article') }}
                     </x-nav-link>
                 </div>
