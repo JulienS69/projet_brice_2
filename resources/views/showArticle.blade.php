@@ -13,7 +13,7 @@
 
 <body>
 
-@foreach($showArticle as $articleInfo)
+@foreach($articles as $articleInfo)
 <div class="row">
     <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;min-height:300px;">
         <div class="card" style="width:100%;height:100%;"><a href="#"><img class="img-fluid card-img-top" style="height:200px;" src="{{$articleInfo->image_article}}"></a>
@@ -25,6 +25,7 @@
         </div>
     </div>
 </div>
+@endforeach
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
