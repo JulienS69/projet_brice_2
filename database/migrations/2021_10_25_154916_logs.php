@@ -16,8 +16,7 @@ class Logs extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("libelle");
-            $table->date("dateLog");
+            $table->string("description");
             $table->foreignIdFor(User::class)->onDelete("cascade");;
             $table->timestamps();
         });

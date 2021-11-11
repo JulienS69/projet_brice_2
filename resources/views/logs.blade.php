@@ -32,9 +32,9 @@
                             <tbody>
                             @foreach($logs as $log)
                                 <tr>
-                                    <td class="text-truncate" style="max-width: 200px;">{{$log->id}}</td>
-                                    <td class="text-truncate" style="max-width: 200px;">{{$log->libelle}}</td>
                                     <td class="text-truncate" style="max-width: 200px;">{{$log->user_id}}</td>
+                                    <td class="text-truncate" style="max-width: 200px;">{{$log->description}}</td>
+                                    <td class="text-truncate" style="max-width: 200px;">{{$log->created_at->format("d/m/Y H:i:s")}}</td>
                             @endforeach
                             </tbody>
                         </table>

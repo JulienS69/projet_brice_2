@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Log extends Model
 {
     use HasFactory;
-
-    protected $table = 'logs';
     public $timestamps = true;
     protected $guarded = [];
+    protected $table = 'logs';
 
 }

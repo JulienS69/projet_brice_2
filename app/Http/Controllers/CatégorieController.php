@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Categorie;
+use App\Models\Log;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CatégorieController extends Controller
 {
@@ -17,7 +19,17 @@ class CatégorieController extends Controller
 
     public function destroy($id){
         $task = Categorie::findOrFail($id);
+
+        $nomCatef = Categorie::addSelect('nom')
+        ->where('id', $task)
+            ->first();
         $task->delete();
+
+//        Log::create([
+//            "user_id" => Auth::user()->getAuthIdentifier(),
+//            "description" =>Auth::user()->nom. " a supprimer la categorie : ". $id->$nomCatef,
+//        ]);
+
         return redirect("/categorie");
     }
 

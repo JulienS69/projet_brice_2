@@ -21,7 +21,7 @@ class Articles extends Migration
             $table->string("titre");
             $table->binary("image_article");
             $table->string("libelle");
-            $table->foreignIdFor(User::class)->onDelete("cascade");;
+            $table->foreignIdFor(User::class)->onDelete("cascade");
             $table->foreignIdFor(Categorie::class)->onDelete("cascade");;
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
