@@ -20,11 +20,11 @@ class Articles extends Migration
             $table->increments('id');
             $table->string("titre");
             $table->binary("image_article");
-            $table->date("date");
             $table->string("libelle");
             $table->foreignIdFor(User::class)->onDelete("cascade");;
             $table->foreignIdFor(Categorie::class)->onDelete("cascade");;
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
 //        DB::unprepared("ALTER TABLE `articles`ADD FOREIGN KEY (users.id) REFERENCES `users`(id)");

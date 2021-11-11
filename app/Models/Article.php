@@ -8,13 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
-
+    public $timestamps = true;
     protected $table = 'articles';
+    protected $guarded = [];
 
     protected $fillable = [
         'id',
         'titre',
-        'date',
         'libelle',
+        'categorie_id',
+        'created_at',
     ];
+
+
 }

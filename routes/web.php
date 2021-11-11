@@ -3,7 +3,8 @@
 use App\Http\Controllers\AddCategorieController;
  use App\Http\Controllers\ArticleController;
  use App\Http\Controllers\CatégorieController;
-use Illuminate\Support\Facades\Route;
+ use App\Http\Controllers\LogsController;
+ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,12 @@ Route::get('/article/{id}', [ArticleController::class, 'show'])->name('showArtic
 
  /* Route N°9 */
  Route::get('/categorie/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');
+
+ /* Route N°10 */
+ Route::get('/categorie/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');
+
+ /* Route N°11 */
+ Route::get('/logs', [LogsController::class, 'index'])->name('log');
 
  /* Route N°10 */
 Route::delete('/categorie/{id}', [CatégorieController::class, 'destroy'])->name('delete_categ');

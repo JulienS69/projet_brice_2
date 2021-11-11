@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class NoteArticle extends Model
 {
     use HasFactory;
-
+    public $timestamps = true;
     protected $table = 'notesArticle';
 
     protected $fillable = [

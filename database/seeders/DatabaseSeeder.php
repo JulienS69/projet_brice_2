@@ -26,6 +26,17 @@ class DatabaseSeeder extends Seeder
 
             ]
         );
+
+        DB::table('users')->insert(
+            [
+                'nom' => 'visiteur',
+                'prenom' => 'visiteur',
+                'tel' => '0658555828',
+                'email' => 'visiteur@gmail.com',
+                'password' => Hash::make('visiteur'),
+
+            ]
+        );
         DB::table('categories')->insert(
             [
                 'nom' => 'Jeux-Video',
@@ -43,7 +54,6 @@ class DatabaseSeeder extends Seeder
             [
                 'titre' => 'LeBron james en sueur',
                 'image_article' => 'https://lasueur.com/wp-content/uploads/2018/10/LeBron-James-Lakers-Wolves.png',
-                'date' => '2018-09-24',
                 'libelle' => 'test',
                 'user_id' => 1,
                 'categorie_id' => 1,
@@ -53,7 +63,16 @@ class DatabaseSeeder extends Seeder
             [
                 'titre' => 'Un Panda sauvage',
                 'image_article' => 'https://images.sudouest.fr/2015/03/01/57eb8dc766a4bd7760bde27e/golden/1-864-pandas-geants.jpg',
-                'date' => '2018-09-25',
+                'libelle' => 'sddsddddd',
+                'user_id' => 1,
+                'categorie_id' => 2,
+
+            ]
+        );
+        DB::table('articles')->insert(
+            [
+                'titre' => 'teedsfssdfdsfsde',
+                'image_article' => 'https://images.sudouest.fr/2015/03/01/57eb8dc766a4bd7760bde27e/golden/1-864-pandas-geants.jpg',
                 'libelle' => 'sddsddddd',
                 'user_id' => 1,
                 'categorie_id' => 2,

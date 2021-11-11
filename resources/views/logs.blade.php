@@ -12,35 +12,31 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-@include('layouts.navigation')
+    @include('layouts.navigation')
     <div class="row justify-content-center" style="padding-top: 25px">
         <div class="col-xl-10 col-xxl-9">
             <div class="card shadow">
                 <div class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
-                    <h5 class="display-6 text-nowrap mb-0" style="font-weight: bold">Tous les articles</h5>
+                    <h5 class="display-6 text-nowrap mb-0" style="font-weight: bold">Logs utilisateurs</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nom de l'article</th>
-                                <th>Catégorie</th>
-                                <th>Date de publication</th>
-                                <th>Liens vers l'article</th>
+                                <th>ID de l'utilisateur</th>
+                                <th>Description</th>
+                                <th>Date de l'action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                    @foreach($article as $unArticle)
-                                        <tr>
-                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->id}}</td>
-                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->titre}}</td>
-                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->nom}}</td>
-                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->created_at->format("d/m/Y")}}</td>
-                                            <td class="text-truncate" style="max-width: 200px;"><a href="{{ route('showArticle', [$unArticle->id]) }}">Cliquez ici pour en savoir plus</a></td>
-                                    @endforeach
-                             </tbody>
+                            @foreach($logs as $log)
+                                <tr>
+                                    <td class="text-truncate" style="max-width: 200px;">{{$log->id}}</td>
+                                    <td class="text-truncate" style="max-width: 200px;">{{$log->libelle}}</td>
+                                    <td class="text-truncate" style="max-width: 200px;">{{$log->user_id}}</td>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>

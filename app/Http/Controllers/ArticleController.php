@@ -11,23 +11,23 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $article = Article::addSelect('id', 'titre')
-            ->get();
+//        Permet de récuperer certaines informations des articles + jointure permettant de récupérer les noms des catégories associés aux articles.
+        $article = Article::addSelect(['articles.id', 'titre', 'categorie_id', 'articles.created_at', 'categories.nom'])
+        ->join('categories', 'categories.id', '=', 'articles.categorie_id')
+        ->get();
         return view('article', compact("article"));
     }
 
-    public function show(Request $request)
+    public function show($id)
     {
-        $idArticle = $request->input('idArticle');
-        $articles = Article::addSelect('titre', 'date', 'libelle', 'image_article')
-//            ->where('id', $idArticle)
-            ->get();
+
+        $article = Article::find($id);
 
 //        $id = Article::addSelect('id')
 //            ->where('id', $idArticle)
 //            ->get();
 
-        return view('showArticle', compact("articles"));
+        return view('showArticle', compact("article"));
     }
 }
 

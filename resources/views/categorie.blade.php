@@ -1,96 +1,68 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-    <!-- Styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-@include('layouts.navigation')
+    @include('layouts.navigation')
 
-
-<!-- Page Heading -->
-    <x-slot name="header" class="block">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight pr-96 inline-block">
-            {{ __('add') }}
-        </h2>
-        <button class="font-semibold text-xl text-gray-800 leading-tight pl-96 ml-22 inline-block" type="submit" href="Categorie">
-            Catégorie
-        </button>
-    </x-slot>
-    <!-- Page Content -->
-    @if(Auth::user()->admin)
-    <div class="container">
-        <a href="{{ route('addCateg') }}">
-            Ajouter une catégorie
-        </a>
-
+    <div class="row justify-content-center" style="padding-top: 25px">
+        <div class="col-xl-10 col-xxl-9">
+            <div class="card shadow">
+                <div class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
+                    <h5 class="display-6 text-nowrap text-capitalize mb-0" style="font-weight: bold">Toutes les catégories</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Nom de l'article</th>
+                                <th>Information</th>
+                                <th>Date de création</th>
+                                @if(Auth::user()->admin)
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center">Actions</th>
+                                @endif
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($catégories as $categorie)
+                            <tr>
+                                <td class="text-truncate" style="max-width: 200px;">{{$categorie->nom}}</td>
+                                <td class="text-truncate" style="max-width: 200px;"><a href="{{route('showArticleFromCateg' , ["id" => $categorie->id])}}"> Voir les articles de cette catégorie </a></td>
+                                <td>{{$categorie->created_at->format("d/m/Y")}}</td>
+                                @if(Auth::user()->admin)
+                                    <td class="text-center"><a class="btn" href="{{ route('addCateg') }}"><i class="fa fa-plus-circle"></i></a></td>
+                                <form action="{{ route("delete_categ", ["id" => $categorie->id]) }}" method="post">
+                                    @csrf
+                                    @method("DELETE")
+                                    <td class="text-center"><button type="submit"><i class="fa fa-minus-circle"></i></button></td>
+                                </form>
+                                    <form action="{{ route("showCateg", ["id" => $categorie->id]) }}" method="post">
+                                        @csrf
+                                        <td class="text-center"><button type="submit"><i class="fa fa-pencil"></i></button></td>
+                                    </form>
+                                @endif
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    @endif
-    <style>
-        .styled {
-            border: 0;
-            line-height: 2.5;
-            padding: 0 20px;
-            font-size: 1rem;
-            text-align: center;
-            color: #fff;
-            text-shadow: 1px 1px 1px #000;
-            border-radius: 10px;
-            background-color: rgba(220, 0, 0, 1);
-            background-image: linear-gradient(to top left,
-            rgba(0, 0, 0, .2),
-            rgba(0, 0, 0, .2) 30%,
-            rgba(0, 0, 0, 0));
-            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-            inset -2px -2px 3px rgba(0, 0, 0, .6);
-        }
-
-        .styled:hover {
-            background-color: rgba(255, 0, 0, 1);
-        }
-
-        .styled:active {
-            box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-            inset 2px 2px 3px rgba(0, 0, 0, .6);
-        }
-
-    </style>
-    <main>
-        @foreach($catégories as $categorie)
-            <tr>
-                <td class="mx-auto"><input style="text-align: center" class="form-control" type="text" value="{{$categorie->nom}}" name="visiteurid" readonly></td>
-                <a href="{{route('showArticleFromCateg' , ["id" => $categorie->id])}}" class="favorite styled"
-                                type="button">
-                            Cliquez ici pour en savoir plus.
-                        </a>
-                @if(Auth::user()->admin)
-                    <form action="{{ route("delete_categ", ["id" => $categorie->id]) }}" method="post">
-                        @csrf
-                        @method("DELETE")
-                        <button type="submit"><img src="../images/corbeille.png"></button>
-                    </form>
-                    <form action="{{ route("showCateg", ["id" => $categorie->id]) }}" method="post">
-                        @csrf
-                        <button type="submit"><img src="../images/bouton-modifier.png"></button>
-                    </form>
-                @endif
-            </tr>
-        @endforeach
-
-    </main>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

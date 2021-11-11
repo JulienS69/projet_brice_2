@@ -10,10 +10,7 @@ class Log extends Model
     use HasFactory;
 
     protected $table = 'logs';
+    public $timestamps = true;
+    protected $guarded = [];
 
-    protected $fillable = [
-        'id',
-        'libelle',
-        'dateLog',
-    ];
 }
