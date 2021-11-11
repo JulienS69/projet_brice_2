@@ -1,4 +1,5 @@
 <x-app-layout>
+    <link rel="icon" href="{{asset('images/xefi.ico')}}">
     <x-slot name="header" class="block">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight pr-96 inline-block">
         </h2>
