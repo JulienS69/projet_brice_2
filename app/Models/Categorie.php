@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Articles;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categorie extends Model
@@ -16,12 +18,14 @@ class Categorie extends Model
     protected $guarded = [];
 
 
-    public function articles(){
-        return $this->hasMany(Article::class);
-    }
 
     public function setDateFormat($format)
     {
         $this->attributes['created_at'] = Carbon::createFromFormat('m/d/Y', $format)->format('d-m-Y');
+    }
+
+    public function articles():BelongsToMany
+    {
+        return $this->belongsToMany(Article::class, "categorie_article");
     }
 }

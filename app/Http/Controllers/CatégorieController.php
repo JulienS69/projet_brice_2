@@ -47,7 +47,9 @@ class CatégorieController extends Controller
     }
 
     public function showArticleFromCateg($id, Request $request){
-            $article = Article::all()->where('categorie_id', $id);
+            $article = Categorie::find($id)->articles;
+//            dd($article);
+//            $article = Article::all()->where('categorie_id', $id);
             return view('article', compact("article"));
     }
 }

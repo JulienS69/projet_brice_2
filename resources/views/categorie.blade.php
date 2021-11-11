@@ -20,7 +20,7 @@
         <div class="col-xl-10 col-xxl-9">
             <div class="card shadow">
                 <div class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
-                    <h5 class="display-6 text-nowrap text-capitalize mb-0" style="font-weight: bold">Toutes les catégories</h5>
+                    <h5 class="display-6 text-nowrap mb-0" style="font-weight: bold">Toutes les catégories</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

@@ -12,8 +12,7 @@ class ArticleController extends Controller
     public function index()
     {
 //        Permet de récuperer certaines informations des articles + jointure permettant de récupérer les noms des catégories associés aux articles.
-        $article = Article::addSelect(['articles.id', 'titre', 'categorie_id', 'articles.created_at', 'categories.nom'])
-        ->join('categories', 'categories.id', '=', 'articles.categorie_id')
+        $article = Article::addSelect(['articles.id', 'titre', 'articles.created_at'])
         ->get();
         return view('article', compact("article"));
     }

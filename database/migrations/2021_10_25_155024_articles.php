@@ -17,14 +17,14 @@ class Articles extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string("titre");
             $table->binary("image_article");
             $table->string("libelle");
-            $table->foreignIdFor(User::class)->onDelete("cascade");
-            $table->foreignIdFor(Categorie::class)->onDelete("cascade");;
+            $table->foreignIdFor(User::class)->constrained("users")->onDelete("CASCADE");
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->softDeletes();
         });
 
 //        DB::unprepared("ALTER TABLE `articles`ADD FOREIGN KEY (users.id) REFERENCES `users`(id)");

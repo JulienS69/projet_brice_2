@@ -16,10 +16,9 @@ class Catégories extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string("nom");
-//            $table->foreignIdFor(Articles::class)->onDelete("cascade");
-            $table->foreignIdFor(User::class)->onDelete("cascade");
+            $table->foreignIdFor(User::class)->constrained('users')->onDelete("cascade");
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();

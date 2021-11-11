@@ -15,10 +15,11 @@ class Logs extends Migration
     public function up()
     {
         Schema::create('logs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string("description");
-            $table->foreignIdFor(User::class)->onDelete("cascade");;
+            $table->foreignIdFor(User::class)->constrained('users')->onDelete("cascade");;
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

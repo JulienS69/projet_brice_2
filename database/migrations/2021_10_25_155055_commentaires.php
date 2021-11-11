@@ -16,12 +16,13 @@ class Commentaires extends Migration
     public function up()
     {
         Schema::create('commentaires', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->date("date");
             $table->string('libelle');
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Article::class);
+            $table->foreignIdFor(User::class)->constrained("users")->onDelete("CASCADE");
+            $table->foreignIdFor(Article::class)->constrained("articles")->onDelete("CASCADE");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

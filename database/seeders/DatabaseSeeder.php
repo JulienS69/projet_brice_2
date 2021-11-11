@@ -56,7 +56,6 @@ class DatabaseSeeder extends Seeder
                 'image_article' => 'https://lasueur.com/wp-content/uploads/2018/10/LeBron-James-Lakers-Wolves.png',
                 'libelle' => 'test',
                 'user_id' => 1,
-                'categorie_id' => 1,
             ]
         );
         DB::table('articles')->insert(
@@ -65,8 +64,6 @@ class DatabaseSeeder extends Seeder
                 'image_article' => 'https://images.sudouest.fr/2015/03/01/57eb8dc766a4bd7760bde27e/golden/1-864-pandas-geants.jpg',
                 'libelle' => 'sddsddddd',
                 'user_id' => 1,
-                'categorie_id' => 2,
-
             ]
         );
         DB::table('articles')->insert(
@@ -75,8 +72,6 @@ class DatabaseSeeder extends Seeder
                 'image_article' => 'https://images.sudouest.fr/2015/03/01/57eb8dc766a4bd7760bde27e/golden/1-864-pandas-geants.jpg',
                 'libelle' => 'sddsddddd',
                 'user_id' => 1,
-                'categorie_id' => 2,
-
             ]
         );
 

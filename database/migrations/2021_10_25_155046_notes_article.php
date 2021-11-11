@@ -16,11 +16,12 @@ class NotesArticle extends Migration
     public function up()
     {
         Schema::create('notesArticle', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string("libelle");
             $table->foreignIdFor(Article::class)->onDelete("cascade");
             $table->foreignIdFor(User::class)->onDelete("cascade");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

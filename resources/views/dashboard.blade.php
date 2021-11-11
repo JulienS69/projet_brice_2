@@ -1,10 +1,11 @@
+
 <x-app-layout>
+    <div class="font-sans antialiased">
+    <div class="min-h-screen bg-gray-100">
     <link rel="icon" href="{{asset('images/xefi.ico')}}">
     <x-slot name="header" class="block">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight pr-96 inline-block">
-        </h2>
-    </x-slot>
 
+    </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -13,5 +14,7 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </x-app-layout>
