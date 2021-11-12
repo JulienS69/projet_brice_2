@@ -34,7 +34,7 @@ class AddCategorieController
             Categorie::create(['nom' => $request->nom, "user_id" => Auth::user()->id]);
             Log::create([
                 "user_id" => Auth::user()->getAuthIdentifier(),
-                "description" =>Auth::user()->nom. " a cree un article s'intitulant : ". $request->nom,
+                "description" => " [CREATE] " .Auth::user()->nom. " a cree un article s'intitulant : ". $request->nom,
             ]);
         }
 //       Redirection vers la page des catégories.

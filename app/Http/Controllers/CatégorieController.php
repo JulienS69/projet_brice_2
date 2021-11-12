@@ -25,10 +25,11 @@ class CatégorieController extends Controller
             ->first();
         $task->delete();
 
-//        Log::create([
-//            "user_id" => Auth::user()->getAuthIdentifier(),
-//            "description" =>Auth::user()->nom. " a supprimer la categorie : ". $id->$nomCatef,
-//        ]);
+
+        Log::create([
+            "user_id" => Auth::user()->getAuthIdentifier(),
+            "description" => " [DELETE] " .Auth::user()->nom. " a supprimer la categorie : ". $id,
+        ]);
 
         return redirect("/categorie");
     }
@@ -41,6 +42,10 @@ class CatégorieController extends Controller
     public function updateCateg($id, Request $request){
         Categorie::findOrFail($id)->update([
             'nom'=>$request->NomCateg
+        ]);
+        Log::create([
+            "user_id" => Auth::user()->getAuthIdentifier(),
+            "description" =>" [UPDATE] ". Auth::user()->nom. " a modifié la categorie ". $request->id. " par : ".$request->NomCateg,
         ]);
         return redirect(route("dashboard"));
 
