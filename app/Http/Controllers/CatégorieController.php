@@ -48,10 +48,9 @@ class CatégorieController extends Controller
             "description" =>" [UPDATE] ". Auth::user()->nom. " a modifié la categorie ". $request->id. " par : ".$request->NomCateg,
         ]);
         return redirect(route("dashboard"));
-
     }
 
-    public function showArticleFromCateg($id, Request $request){
+    public function showArticleFromCateg(Request $request, $id){
             $article = Categorie::find($id)->articles;
 //            dd($article);
 //            $article = Article::all()->where('categorie_id', $id);

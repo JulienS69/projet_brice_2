@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -27,7 +27,7 @@
 
 <div class="row">
     <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;min-height:300px;">
-        <div class="card" style="width:100%;height:100%;"><a href="#"><img class="img-fluid card-img-top" style="height:200px;" src="{{$article->image_article}}"></a>
+        <div class="card" style="width:100%;height:100%;">
             <div class="card-body">
                 <h5>{{$article->titre}}</h5>
                 <p>{{$article->date}}</p>

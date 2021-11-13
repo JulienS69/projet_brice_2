@@ -47,7 +47,7 @@ Route::get('/article', [ArticleController::class, 'index'])->name('article');
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('showArticle');
 
  /* Route N°9 */
- Route::get('/categorie/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');
+ Route::get('/{categorie}/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');
 
  /* Route N°10 */
  Route::get('/categorie/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');
@@ -58,3 +58,11 @@ Route::get('/article/{id}', [ArticleController::class, 'show'])->name('showArtic
  /* Route N°10 */
 Route::delete('/categorie/{id}', [CatégorieController::class, 'destroy'])->name('delete_categ');
 require __DIR__.'/auth.php';
+
+ /* Route N°12 */
+ Route::post('/article', [ArticleController::class, 'store'])->name('addArticle');
+ /* Route N°13 */
+ Route::post('/article/update', [ArticleController::class, 'update'])->name('article.update');
+ /* Route N°13 */
+ Route::post('/article/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');require __DIR__.'/auth.php';
+
