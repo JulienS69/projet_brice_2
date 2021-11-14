@@ -18,27 +18,51 @@
     <div class="row justify-content-center" style="padding-top: 25px">
         <div class="col-xl-10 col-xxl-9">
             <div class="card shadow">
-                <div class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
+                <div
+                    class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
                     <h5 class="display-6 text-nowrap mb-0" style="font-weight: bold">{{$article->titre}}</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
-<div class="columns">
-    <div class="modal-title">
-        <h2>Article écrit par : {{$article->user->nom}}</h2>
-    <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;min-height:300px;">
-        <div class="card" style="width:100%;height:100%;">
-            <div class="card-body">
-                <h5>{{$article->titre}}</h5>
-                <p>{{$article->date}}</p>
+                            <div class="modal-title">
+                                <h2>Article écrit par : {{$article->user->nom}}</h2>
+                                <p> le : {{$article->created_at->format("d/m/Y")}}</p>
+                                <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12"
+                                     style="min-width:300px;min-height:300px;">
+                                    <div class="row">
+{{--                                        <h5 style="font-weight: bold">{{$article->titre}}</h5>--}}
+                                        <br> <br>
+                                        <h3 style="font-weight: bold;">Contenu de l'article : </h3>
+                                        <br>
+                                        <h3 class="card-body" style="size: 25px">{{$article->libelle}} </h3>
+                                    </div>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div class="card">
+                                    <p class="card-title" style="font-weight: bold;"> Espace commentaire : </p>
+                                    <br>
+                                    <ul>
+                                        @foreach($commentaires as $commentaire)
+                                            <li>{{Auth::user()->nom}}: {{$commentaire->contenu}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <br>
+                                <div class="card-footer text-center">
+                                    <a href="{{route("commentaire.index",[$article->id])}}"> Écrire un commentaire ?
+                                        <br></a></div>
+                                <script
+                                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+                            </div>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="card-footer text-center"><small><a href="{{route("commentaire.index",[$article->id])}}"><i class="fa fa-eye pe-1"></i> {{$article->libelle}}<br></a></small></div>
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -430,9 +430,9 @@
                 <a href="{{ route('login') }}" class="btn btn-white btn-animate" style="margin-left: 25px;
                     margin-top: -1vh;">Se connecter</a>
         </div>
-     @if (Route::has('register'))
-        <div class="text-box1">
-            <a href="{{ route('register') }}" class="btn btn-white btn-animate">S'inscrire</a>
+        @if (Route::has('register'))
+            <div class="text-box1">
+                <a href="{{ route('register') }}" class="btn btn-white btn-animate">S'inscrire</a>
             </div>
         @endif
     @endauth

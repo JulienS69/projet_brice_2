@@ -45,7 +45,7 @@ class CommentaireController extends Controller
             "description" => " [CREATE] " .Auth::user()->nom. " a cree un commentaire : ". $request->contenu,
         ]);
 
-        return redirect()->back();
+        return redirect("/article");
     }
 
     /**

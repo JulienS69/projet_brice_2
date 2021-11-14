@@ -19,7 +19,7 @@ class Articles extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string("titre");
-            $table->string("libelle");
+            $table->string("libelle", 15000);
             $table->binary("image_article")->nullable();
             $table->foreignIdFor(User::class)->constrained("users")->onDelete("CASCADE");
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

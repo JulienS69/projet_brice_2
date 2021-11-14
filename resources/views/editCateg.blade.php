@@ -13,11 +13,12 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-@include('layouts.navigation')
+    @include('layouts.navigation')
     <div class="row justify-content-center" style="padding-top: 25px">
         <div class="col-xl-10 col-xxl-9">
             <div class="card shadow">
-                <div class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
+                <div
+                    class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
                     <h5 class="display-6 text-nowrap mb-0" style="font-weight: bold">Modification d'une catégorie</h5>
                 </div>
                 <div class="card-body">
@@ -27,7 +28,9 @@
                             @method("PUT")
                             <label for="">Modification de la catégorie</label>
                             <input type="text" value="{{$search->nom}}" name="NomCateg">
-                            <button type="submit" style="font-weight: bold; background-color: #ffffff; padding-left: 20px">Modifier</button>
+                            <button type="submit"
+                                    style="font-weight: bold; background-color: #ffffff; padding-left: 20px">Modifier
+                            </button>
                         </form>
                     </div>
                 </div>

@@ -13,29 +13,43 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-@include('layouts.navigation')
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200  row justify-content-center">
-                <h3 class="mb-5">Modification d'un article</h3>
-                <form class="col-10 justify-content-center text-center" action="{{ route('article.update') }}" method="POST">
-                    @csrf
-                    <label class="" for="name">Nom de l'article : </label>
-                    <select class="form-select okokok" name="article">
-                        @foreach($article as $Unarticle)
-                            <option>{{ $Unarticle->titre}}</option>
-                        @endforeach
-                    </select>
-                    <label class="mt-5" for="price">Nouveau nom :</label>
-                    <input class="text-center form-control" type="text" name="nouveauNom">
-                    <label class="mt-5" for="price">Nouveau contenu :</label>
-                    <textarea style="resize: none;height:300px;" class="text-center form-control" type="text" name="newDescription"></textarea>
-                    <button type="submit" class="mt-5  btn btn-warning">Modifier</button>
-                </form>
+    @include('layouts.navigation')
+    <div class="row justify-content-center" style="padding-top: 25px">
+        <div class="col-xl-10 col-xxl-9">
+            <div class="card shadow">
+                <div
+                    class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
+                    <h5 class="display-6 text-nowrap mb-0" style="font-weight: bold">Modification d'un article</h5>
+                </div>
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="card-body">
+                        <form class="col-10 justify-content-center text-center"
+                              action="{{ route('article.update') }}" method="POST">
+                            <div class="row">
+                                @csrf
+                                <label class="" for="name">Nom de l'article : </label>
+                                <select class="form-select okokok" name="article">
+                                    @foreach($article as $Unarticle)
+                                        <option>{{ $Unarticle->titre}}</option>
+                                    @endforeach
+                                </select>
+                                <label class="mt-5" for="price">Nouveau nom :</label>
+                                <input class="text-center form-control" type="text" name="nouveauNom">
+                                <label class="mt-5" for="price">Nouveau contenu :</label>
+                                <textarea style="resize: none;height:300px;" class="text-center form-control"
+                                          type="text" name="newDescription"></textarea>
+                                <button type="submit" class="mt-5  btn btn-warning" style="background-color: limegreen">
+                                    Modifier
+                                </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -18,7 +18,8 @@
     <div class="row justify-content-center" style="padding-top: 25px">
         <div class="col-xl-10 col-xxl-9">
             <div class="card shadow">
-                <div class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
+                <div
+                    class="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
                     <h5 class="display-6 text-nowrap mb-0" style="font-weight: bold">Création d'une catégorie</h5>
                 </div>
                 <div class="card-body">

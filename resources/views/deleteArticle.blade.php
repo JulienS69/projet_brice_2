@@ -13,24 +13,24 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-@include('layouts.navigation')
+    @include('layouts.navigation')
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200  row justify-content-center">
                 <h3 class="mb-5">Suppression d'un article</h3>
                 @foreach($article as $Unarticle)
 
-                <form action="{{ route("article.destroy", ["id" => $Unarticle->id]) }}" method="post">
-                    @endforeach
-                    @csrf
-                    <select class="form-select okokok" name="article">
-                        @foreach($article as $Unarticle)
-                            <option value="{{$Unarticle->titre}}">{{$Unarticle->titre}}</option>
+                    <form action="{{ route("article.destroy", ["id" => $Unarticle->id]) }}" method="post">
                         @endforeach
-                    </select>
+                        @csrf
+                        <select class="form-select okokok" name="article">
+                            @foreach($article as $Unarticle)
+                                <option value="{{$Unarticle->titre}}">{{$Unarticle->titre}}</option>
+                            @endforeach
+                        </select>
 
-                    <button type="submit" class="mt-5  btn btn-warning">Supprimer</button>
-                </form>
+                        <button type="submit" class="mt-5  btn btn-warning">Supprimer</button>
+                    </form>
             </div>
         </div>
     </div>
