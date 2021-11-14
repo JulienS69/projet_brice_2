@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Categorie;
 use App\Models\Commentaires;
@@ -31,31 +32,14 @@ class CommentaireController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        Commentaires::create(['contenu' => $request->contenu, "user_id" => Auth::user()->id, 'article_id'=>$id]);
+        Log::create([
+            "user_id" => Auth::user()->getAuthIdentifier(),
+            "description" => " [CREATE] " .Auth::user()->nom. " a cree un commentaire : ". $request->contenu,
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -67,7 +51,9 @@ class CommentaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        Commentaires::where('contenu', $input['commentaireOldContenu'])->update(['contenu' => $input['newDescription']]);
+        return redirect()->back();
     }
 
     /**

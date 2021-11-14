@@ -1,4 +1,6 @@
-
+<?php
+$cpt=0;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,19 +37,53 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card")>
+                        <h5>Espace commentaire et note</h5>
+                        <ul>
+                            @foreach($commentaires as $commentaire)
+                                <li>{{$cpt+1}}: {{$commentaire->contenu}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <h5>Espace commentaire et note</h5>
-
-                     @foreach($commentaires as $commentaire)
-                     <p>{{$commentaire->contenu}}</p>
-                     @endforeach
-
 
             </div>
+
             @if(Auth::user()->admin)
-
+                {{--Ajout de commentaire--}}
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 bg-white border-b border-gray-200  row justify-content-center">
+                            <h3 class="mb-5">Création d'un article</h3>
+                            <form class="col-10 justify-content-center text-center" action="{{ route('addCommentaire',[$article->id])}}" method="POST">
+                                @csrf
+                                <label class="mt-5" for="price">Contenu du commentaire :</label>
+                                <textarea style="resize: none;height:300px;" class="text-center form-control" type="text" name="contenu"></textarea>
+                                <button type="submit" class="mt-5  btn btn-warning">Ajouter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {{-- Modification d'un article--}}
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 bg-white border-b border-gray-200  row justify-content-center">
+                            <h3 class="mb-5">Modification d'un article</h3>
+                            <form class="col-10 justify-content-center text-center" action="{{ route('commentaire.update', [$commentaire->id]) }}" method="POST">
+                                @csrf
+                                <label class="" for="name">Ancien contenu du commentaire : </label>
+                                <select class="form-select okokok" name="commentaireOldContenu">
+                                    @foreach($commentaires as $commentaire)
+                                        <option>{{ $commentaire->contenu}}</option>
+                                    @endforeach
+                                </select>
+                                <label class="mt-5" for="price">Nouveau contenu du commentaire :</label>
+                                <textarea style="resize: none;height:300px;" class="text-center form-control" type="text" name="newDescription"></textarea>
+                                <button type="submit" class="mt-5  btn btn-warning">Modifier</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
     </div>

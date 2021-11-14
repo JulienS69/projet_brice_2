@@ -62,10 +62,18 @@ require __DIR__.'/auth.php';
 
  /* Route N°12 */
  Route::post('/article', [ArticleController::class, 'store'])->name('addArticle');
+
  /* Route N°13 */
  Route::post('/article/update', [ArticleController::class, 'update'])->name('article.update');
+
  /* Route N°13 */
- Route::post('/article/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');require __DIR__.'/auth.php';
+ Route::post('/article/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+ require __DIR__.'/auth.php';
 
  /* Route N°13 */
  Route::get('/article/commentaire/{id}', [CommentaireController::class, 'index'])->name('commentaire.index');
+ /* Route N°13 */
+ Route::post('/article/commentaire/{id}', [CommentaireController::class, 'store'])->name('addCommentaire');
+
+ /* Route N°13 */
+ Route::post('/article/commentaire/edit/{id}', [CommentaireController::class, 'update'])->name('commentaire.update');
