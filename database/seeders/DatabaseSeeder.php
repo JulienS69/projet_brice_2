@@ -59,7 +59,6 @@ class DatabaseSeeder extends Seeder
         DB::table('articles')->insert(
             [
                 'titre' => 'Un Panda sauvage',
-
                 'libelle' => 'sddsddddd',
                 'user_id' => 1,
             ]
@@ -69,6 +68,7 @@ class DatabaseSeeder extends Seeder
                 'titre' => 'teedsfssdfdsfsde',
                 'libelle' => 'sddsddddd',
                 'user_id' => 1,
+
             ]
         );
         DB::table('commentaires')->insert(
@@ -78,6 +78,7 @@ class DatabaseSeeder extends Seeder
                 'article_id'=>3,
             ]
         );
+        $this->call([CategorieArticleSeeder::class]);
 
     }
 }

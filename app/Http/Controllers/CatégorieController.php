@@ -28,7 +28,7 @@ class CatégorieController extends Controller
 
         Log::create([
             "user_id" => Auth::user()->getAuthIdentifier(),
-            "description" => " [DELETE] " .Auth::user()->nom. " a supprimer la categorie : ". $id,
+            "description" => " [DELETE] " .Auth::user()->nom. " a supprimer la categorie portant l'id : ". $id,
         ]);
 
         return redirect("/categorie");
@@ -52,9 +52,9 @@ class CatégorieController extends Controller
 
     public function showArticleFromCateg(Request $request, $id){
             $article = Categorie::find($id)->articles;
-//            dd($article);
+            dd($article);
 //            $article = Article::all()->where('categorie_id', $id);
-
+//            dd($article);
             return view('article', compact("article"));
     }
 }

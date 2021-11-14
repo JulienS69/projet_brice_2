@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-namespace App\Http\Controllers;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Categorie;
@@ -11,17 +13,20 @@ use App\Models\Commentaires;
 use App\Models\Log;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 class CommentaireController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index($id)
     {
         $article = Article::find($id);
         $commentaires = Commentaires::where('article_id',$id)->get();
+
+
         return view('commentaires',compact("article","commentaires"));
     }
 
@@ -29,8 +34,8 @@ class CommentaireController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request,$id)
     {
@@ -39,20 +44,22 @@ class CommentaireController extends Controller
             "user_id" => Auth::user()->getAuthIdentifier(),
             "description" => " [CREATE] " .Auth::user()->nom. " a cree un commentaire : ". $request->contenu,
         ]);
+
         return redirect()->back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
         $input = $request->all();
         Commentaires::where('contenu', $input['commentaireOldContenu'])->update(['contenu' => $input['newDescription']]);
+
         return redirect()->back();
     }
 

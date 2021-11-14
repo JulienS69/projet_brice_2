@@ -25,84 +25,43 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th>ID</th>
+{{--                                <th>ID</th>--}}
                                 <th>Nom de l'article</th>
                                 <th>Catégorie</th>
                                 <th>Date de publication</th>
                                 <th>Liens vers l'article</th>
+                                @if(Auth::user()->admin)
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center">Actions</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
                                     @foreach($article as $unArticle)
                                         <tr>
-                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->id}}</td>
+{{--                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->id}}</td>--}}
                                             <td class="text-truncate" style="max-width: 200px;">{{$unArticle->titre}}</td>
-                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->nom}}</td>
+                                            @foreach($unArticle->categories as $categorie)
+                                                <td class="text-truncate" style="max-width: 200px;">   {{$categorie->nom}}{{$loop->last ? "" : ","}} </td>
+                                            @endforeach
 {{--                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->categories[0]->nom}}</td>--}}
                                             <td class="text-truncate" style="max-width: 200px;">{{$unArticle->created_at->format("d/m/Y")}}</td>
                                             <td class="text-truncate" style="max-width: 200px;"><a href="{{ route('showArticle', [$unArticle->id]) }}">Cliquez ici pour en savoir plus</a></td>
+                                            @if(Auth::user()->admin)
+                                                <td class="text-center"><a class="btn" href="{{ route('addViewArticle') }}"><i class="fa fa-plus-circle"></i></a></td>
+                                                <form action="{{ route("deleteViewArticle", ["id" => $unArticle->id]) }}" method="post">
+                                                    @method("DELETE")
+                                                    @csrf
+                                                    <td class="text-center"><button type="submit"><i class="fa fa-minus-circle"></i></button></td>
+                                                </form>
+                                                <td class="text-center"><a class="btn" href="{{ route('updateViewArticle') }}"><i class="fa fa-pencil"></i></a></td>
+                                        @endif
                                     @endforeach
                              </tbody>
                         </table>
                     </div>
                 </div>
-                @if(Auth::user()->admin)
-                {{-- Ajout d'un article--}}
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 bg-white border-b border-gray-200  row justify-content-center">
-                            <h3 class="mb-5">Création d'un article</h3>
-                            <form class="col-10 justify-content-center text-center" action="{{ route('addArticle')}}" method="POST">
-                                @csrf
-                                <label class="" for="name">Nom de l'article : </label>
-                                <input class="text-center form-control" type="text" name="nom">
-                                <label class="mt-5" for="price">Contenu de l'article :</label>
-                                <textarea style="resize: none;height:300px;" class="text-center form-control" type="text" name="libelle"></textarea>
-                                <button type="submit" class="mt-5  btn btn-warning">Ajouter</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                {{-- Modification d'un article--}}
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 bg-white border-b border-gray-200  row justify-content-center">
-                            <h3 class="mb-5">Modification d'un article</h3>
-                            <form class="col-10 justify-content-center text-center" action="{{ route('article.update') }}" method="POST">
-                                @csrf
-                                <label class="" for="name">Nom de l'article : </label>
-                                <select class="form-select okokok" name="article">
-                                    @foreach($article as $Unarticle)
-                                        <option>{{ $Unarticle->titre}}</option>
-                                    @endforeach
-                                </select>
-                                <label class="mt-5" for="price">Nouveau nom :</label>
-                                <input class="text-center form-control" type="text" name="nouveauNom">
-                                <label class="mt-5" for="price">Nouveau contenu :</label>
-                                <textarea style="resize: none;height:300px;" class="text-center form-control" type="text" name="newDescription"></textarea>
-                                <button type="submit" class="mt-5  btn btn-warning">Modifier</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                    {{-- Suppression d'un article--}}
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6 bg-white border-b border-gray-200  row justify-content-center">
-                                <h3 class="mb-5">Suppression d'un article</h3>
-                                <form action="{{ route("article.destroy", ["id" => $Unarticle->id]) }}" method="post">
-                                    @csrf
-                                    <select class="form-select okokok" name="article">
-                                    @foreach($article as $Unarticle)
-                                            <option value="{{$Unarticle->titre}}">{{$Unarticle->titre}}</option>
-                                    @endforeach
-                                    </select>
-                                    <button type="submit" class="mt-5  btn btn-warning">Supprimer</button>
-                                </form>
-                            </div>
-                        </div>
-                @endif
             </div>
         </div>
     </div>

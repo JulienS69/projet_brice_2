@@ -24,7 +24,6 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
-
 <div class="columns">
     <div class="modal-title">
         <h2>Article écrit par : {{$article->user->nom}}</h2>

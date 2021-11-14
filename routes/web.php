@@ -58,17 +58,24 @@ Route::get('/article/{id}', [ArticleController::class, 'show'])->name('showArtic
 
  /* Route N°10 */
 Route::delete('/categorie/{id}', [CatégorieController::class, 'destroy'])->name('delete_categ');
+
 require __DIR__.'/auth.php';
 
  /* Route N°12 */
+ Route::get('/article/view/add', [ArticleController::class, 'indexAddArticle'])->name('addViewArticle');
+
+ Route::get('/article/view/update', [ArticleController::class, 'indexUpdateArticle'])->name('updateViewArticle');
+
+ Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('deleteViewArticle');
+
  Route::post('/article', [ArticleController::class, 'store'])->name('addArticle');
 
  /* Route N°13 */
  Route::post('/article/update', [ArticleController::class, 'update'])->name('article.update');
 
  /* Route N°13 */
- Route::post('/article/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
- require __DIR__.'/auth.php';
+// Route::post('/article/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+// require __DIR__.'/auth.php';
 
  /* Route N°13 */
  Route::get('/article/commentaire/{id}', [CommentaireController::class, 'index'])->name('commentaire.index');
