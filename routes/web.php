@@ -4,6 +4,7 @@ use App\Http\Controllers\AddCategorieController;
  use App\Http\Controllers\ArticleController;
  use App\Http\Controllers\CatégorieController;
  use App\Http\Controllers\LogsController;
+ use App\Http\Controllers\CommentaireController;
  use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,3 +67,5 @@ require __DIR__.'/auth.php';
  /* Route N°13 */
  Route::post('/article/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');require __DIR__.'/auth.php';
 
+ /* Route N°13 */
+ Route::get('/article/commentaire/{id}', [CommentaireController::class, 'index'])->name('commentaire.index');

@@ -34,7 +34,7 @@
                 <h5>{{$article->titre}}</h5>
                 <p>{{$article->date}}</p>
             </div>
-            <div class="card-footer text-center"><small><a href="#"><i class="fa fa-eye pe-1"></i> {{$article->libelle}}<br></a></small></div>
+            <div class="card-footer text-center"><small><a href="{{route("commentaire.index",[$article->id])}}"><i class="fa fa-eye pe-1"></i> {{$article->libelle}}<br></a></small></div>
         </div>
     </div>
 </div>

@@ -17,8 +17,7 @@ class Commentaires extends Migration
     {
         Schema::create('commentaires', function (Blueprint $table) {
             $table->id();
-            $table->date("date");
-            $table->string('libelle');
+            $table->string('contenu');
             $table->foreignIdFor(User::class)->constrained("users")->onDelete("CASCADE");
             $table->foreignIdFor(Article::class)->constrained("articles")->onDelete("CASCADE");
             $table->timestamps();

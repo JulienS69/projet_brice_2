@@ -71,6 +71,13 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
             ]
         );
+        DB::table('commentaires')->insert(
+            [
+                'contenu' => 'Un article pourri',
+                'user_id' => 1,
+                'article_id'=>3,
+            ]
+        );
 
     }
 }
