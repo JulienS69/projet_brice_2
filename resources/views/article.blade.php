@@ -38,6 +38,7 @@
                                             <td class="text-truncate" style="max-width: 200px;">{{$unArticle->id}}</td>
                                             <td class="text-truncate" style="max-width: 200px;">{{$unArticle->titre}}</td>
                                             <td class="text-truncate" style="max-width: 200px;">{{$unArticle->nom}}</td>
+{{--                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->categories[0]->nom}}</td>--}}
                                             <td class="text-truncate" style="max-width: 200px;">{{$unArticle->created_at->format("d/m/Y")}}</td>
                                             <td class="text-truncate" style="max-width: 200px;"><a href="{{ route('showArticle', [$unArticle->id]) }}">Cliquez ici pour en savoir plus</a></td>
                                     @endforeach

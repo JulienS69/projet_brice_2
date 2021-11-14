@@ -54,6 +54,7 @@ class CatégorieController extends Controller
             $article = Categorie::find($id)->articles;
 //            dd($article);
 //            $article = Article::all()->where('categorie_id', $id);
+
             return view('article', compact("article"));
     }
 }

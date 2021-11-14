@@ -24,13 +24,15 @@ class ArticleController extends Controller
     public function show($id)
     {
 
+//        $article = Article::find($id)->with("user");
         $article = Article::find($id);
 
+//        $article = Article::where("id",$id)->with("user")->first();
 //        $id = Article::addSelect('id')
 //            ->where('id', $idArticle)
 //            ->get();
 
-        return view('showArticle', compact("article"));
+        return view('showArticle', compact(["article"]));
     }
 
     public function store(Request $request){

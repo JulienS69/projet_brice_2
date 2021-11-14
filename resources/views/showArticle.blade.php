@@ -25,7 +25,9 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
 
-<div class="row">
+<div class="columns">
+    <div class="modal-title">
+        <h2>Article écrit par : {{$article->user->nom}}</h2>
     <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;min-height:300px;">
         <div class="card" style="width:100%;height:100%;">
             <div class="card-body">
