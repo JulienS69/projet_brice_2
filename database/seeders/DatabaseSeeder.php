@@ -78,6 +78,14 @@ class DatabaseSeeder extends Seeder
                 'article_id'=>3,
             ]
         );
+        DB::table('notesarticle')->insert(
+            [
+                'note' => 9,
+                'article_id'=>1,
+                'user_id' => 1,
+            ]
+        );
+
         $this->call([CategorieArticleSeeder::class]);
 
     }

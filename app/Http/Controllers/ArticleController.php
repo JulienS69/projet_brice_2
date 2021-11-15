@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Categorie;
 use App\Models\Commentaires;
 use App\Models\Log;
+use App\Models\NoteArticle;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,14 +29,14 @@ class ArticleController extends Controller
 //        $article = Article::find($id)->with("user");
         $article = Article::find($id);
         $commentaires = Commentaires::where('article_id',$id)->get();
-
+        $notes = NoteArticle::where('article_id',$id)->get();
 
 //        $article = Article::where("id",$id)->with("user")->first();
 //        $id = Article::addSelect('id')
 //            ->where('id', $idArticle)
 //            ->get();
 
-        return view('showArticle', compact(["article", "commentaires", "test"]));
+        return view('showArticle', compact(["article", "commentaires","notes"]));
     }
 
     public function store(Request $request){

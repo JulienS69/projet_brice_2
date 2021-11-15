@@ -15,6 +15,8 @@ class NoteArticle extends Model
 
     protected $fillable = [
         'id',
-        'libelle',
+        'note',
+        'article_id',
+        'user_id'
     ];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NoteArticle;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -14,55 +15,55 @@ use App\Models\Log;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class CommentaireController extends Controller
+class NotesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Application|Factory|View
+     * @return \Illuminate\Http\Response
      */
     public function index($id)
     {
         $article = Article::find($id);
-        $commentaires = Commentaires::where('article_id',$id)->get();
+        $notes = NoteArticle::where('article_id',$id)->get();
 
-        return view('commentaires',compact("article","commentaires"));
+        return view('notes',compact("article","notes"));
     }
-
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return RedirectResponse
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request,$id)
     {
 
-        Commentaires::create(['contenu' => $request->contenu, "user_id" => Auth::user()->id, 'article_id'=>$id]);
+        NoteArticle::create(['note' => $request->all()['note_article'], 'article_id'=>$id,"user_id" => Auth::user()->id ]);
         Log::create([
             "user_id" => Auth::user()->getAuthIdentifier(),
-            "description" => " [CREATE] " .Auth::user()->nom. " a cree un commentaire : ". $request->contenu,
+            "description" => " [CREATE] " .Auth::user()->nom. " a ajoutee une note : ". $request->note." à l'article ". $id,
         ]);
 
         return redirect("/article");
     }
 
+
+
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $input = $request->all();
 
-        $idCom= Commentaires::where('contenu', $input['commentaireAncien'])->get()[0]->id;
+        $idNote= NoteArticle::where('note', $input['note_article'])->get()[0]->id;
 
-
-        Commentaires::where('id', $idCom)->update(['contenu' => $input['newContenu']]);
+        NoteArticle::where('id', $idNote)->update(['note' => $input['NewNote']]);
 
         return redirect()->back();
     }
@@ -76,16 +77,14 @@ class CommentaireController extends Controller
     public function destroy(Request $request)
     {
         $input = $request->all();
-
-
-        $idCom = Commentaires::where('contenu', $input['deleteCom'])->get()[0]->id;
+        $idNote = NoteArticle::where('note', $input['deleteNote'])->get()[0]->id;
         Log::create([
             "user_id" => Auth::user()->getAuthIdentifier(),
-            "description" => " [DELETE] " .Auth::user()->nom. "a supprimé le commentaire portant l'id : ". $idCom
+            "description" => " [DELETE] " .Auth::user()->nom. "a supprimé la note portant l'id : ". $idNote
         ]);
 
-        $ligneCom = Commentaires::find($idCom);
-        $ligneCom->delete();
+        $ligneNote = NoteArticle::find($idNote);
+        $ligneNote->delete();
 
         return redirect("/article");
     }

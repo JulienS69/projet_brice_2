@@ -48,10 +48,25 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                                <br>
                                 <div class="card-footer text-center">
-                                    <a href="{{route("commentaire.index",[$article->id])}}"> Écrire un commentaire ?
-                                        <br></a></div>
+                                    <a href="{{route("commentaire.index",[$article->id])}}"> Écrire un commentaire ?<br></a>
+
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <p class="card-title" style="font-weight: bold;"> Espace note : </p>
+                                    <br>
+                                    <ul>
+                                        @foreach( $notes as $note)
+                                            <li>utilisateur: {{$note->user_id}} a noté : {{$note->note}}/10</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="{{route("notes.index",[$article->id])}}"> Noté l'article ?<br></a>
+                                </div>
+                                <br>
+
                                 <script
                                     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
                             </div>

@@ -17,7 +17,7 @@ class NotesArticle extends Migration
     {
         Schema::create('notesArticle', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle");
+            $table->integer("note");
             $table->foreignIdFor(Article::class)->onDelete("cascade");
             $table->foreignIdFor(User::class)->onDelete("cascade");
             $table->timestamps();

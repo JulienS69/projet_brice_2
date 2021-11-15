@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddCategorieController;
  use App\Http\Controllers\ArticleController;
  use App\Http\Controllers\CatégorieController;
+ use App\Http\Controllers\NotesController;
  use App\Http\Controllers\ContactController;
  use App\Http\Controllers\LogsController;
  use App\Http\Controllers\CommentaireController;
@@ -77,11 +78,26 @@ require __DIR__.'/auth.php';
 
  /* Route N°13 */
  Route::get('/article/commentaire/{id}', [CommentaireController::class, 'index'])->name('commentaire.index');
+
+ /* Route N°13 */
+ Route::post('/article/commentaire/edit', [CommentaireController::class, 'update'])->name('commentaire.update');
+
+ Route::post('/article/commentaire/delete', [CommentaireController::class, 'destroy'])->name('deleteCommentaire');
+
  /* Route N°13 */
  Route::post('/article/commentaire/{id}', [CommentaireController::class, 'store'])->name('addCommentaire');
 
- /* Route N°13 */
- Route::post('/article/commentaire/edit/{id}', [CommentaireController::class, 'update'])->name('commentaire.update');
 
- /* Route N°14 */
- Route::get('/contact', [ContactController::class, 'index'])->name('indexContact');
+
+ /* Route N°13 */
+ Route::get('/article/note/{id}', [NotesController::class, 'index'])->name('notes.index');
+
+ /* Route N°13 */
+ Route::post('/article/note/edit', [NotesController::class, 'update'])->name('note.update');
+
+ Route::post('/article/note/delete', [NotesController::class, 'destroy'])->name('deleteNote');
+ /* Route N°13 */
+ Route::post('/article/note/{id}', [NotesController::class, 'store'])->name('addNote');
+
+
+

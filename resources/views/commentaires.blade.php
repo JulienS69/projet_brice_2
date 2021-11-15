@@ -61,6 +61,47 @@
                     </div>
                 </div>
             </div>
+        @if(Auth::user()->admin)
+            {{-- Modification d'un commentaire--}}
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
+                            <h3 class="mb-5">Modification d'un commentaire</h3>
+                                <form class="col-10 justify-content-center text-center" action="{{ route('commentaire.update') }}" method="POST">
+                                    @csrf
+                                    <select class="form-select" name="commentaireAncien">
+                                        @foreach($commentaires as $commentaire)
+                                            <option>{{ $commentaire->contenu}}</option>
+                                        @endforeach
+                                    </select>
+                                    <label class="mt-5" for="price">Nouveau contenu :</label>
+                                    <textarea style="resize: none;height:300px;" class="text-center form-control" type="text" name="newContenu"></textarea>
+                                    <button type="submit" class="mt-5  btn btn-warning">Modifier</button>
+                                </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Suppression d'un commentaire--}}
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
+                            <h3 class="mb-5">Suppression d'un commentaire</h3>
+                            <form action="{{ route("deleteCommentaire") }}" method="post">
+                                @csrf
+                                <select name="deleteCom" id="">
+                                    @foreach($commentaires as $commentaire)
+                                        <option value="{{$commentaire->contenu}}">{{$commentaire->contenu}}</option>
+                                     @endforeach
+                                </select><br>
+                                <button type="submit" class="mt-5  btn btn-warning">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        @endif
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
