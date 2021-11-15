@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddCategorieController;
  use App\Http\Controllers\ArticleController;
  use App\Http\Controllers\CatégorieController;
+ use App\Http\Controllers\ContactController;
  use App\Http\Controllers\LogsController;
  use App\Http\Controllers\CommentaireController;
  use Illuminate\Support\Facades\Route;
@@ -81,3 +82,6 @@ require __DIR__.'/auth.php';
 
  /* Route N°13 */
  Route::post('/article/commentaire/edit/{id}', [CommentaireController::class, 'update'])->name('commentaire.update');
+
+ /* Route N°14 */
+ Route::get('/contact', [ContactController::class, 'index'])->name('indexContact');
