@@ -42,6 +42,12 @@ class CommentaireController extends Controller
     {
         //Requete d'insertion à l'aide des réponse du formulaire de la vue 'commentaires.blade.php'
         Commentaires::create(['contenu' => $request->contenu, "user_id" => Auth::user()->id, 'article_id'=>$id]);
+
+//        $test = Commentaires::addSelect('nom.users')
+//            ->join('users', 'users.id', '=', 'commentaires.user_id')
+//            ->first();
+//
+
         //Création des Logs
         Log::create([
             "user_id" => Auth::user()->getAuthIdentifier(),

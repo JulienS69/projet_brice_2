@@ -44,6 +44,8 @@ Route::delete('/categorie/{id}', [CatégorieController::class, 'destroy'])->name
  /* Route LogsController */
 Route::get('/logs', [LogsController::class, 'index'])->name('log');
 
+ /* Route ContactController */
+ Route::get('/contact', [ContactController::class, 'index'])->name('indexContact');
 
 
 require __DIR__.'/auth.php';
