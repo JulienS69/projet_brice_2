@@ -58,7 +58,7 @@
                                     <br>
                                     <ul>
                                         @foreach( $notes as $note)
-                                            <li>utilisateur: {{$note->user_id}} a noté : {{$note->note}}/10</li>
+                                            <li>utilisateur: {{$note->user->nom}} a noté : {{$note->note}}/10</li>
                                         @endforeach
                                     </ul>
                                 </div>

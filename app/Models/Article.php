@@ -15,7 +15,7 @@ class Article extends Model
     protected $table = 'articles';
     protected $guarded = [];
 
-
+//Relation Belongs to Many entre Categorie et article
  public function categories():BelongsToMany
  {
      return $this->belongsToMany(Categorie::class, "categorie_article");

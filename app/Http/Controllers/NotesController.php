@@ -24,6 +24,7 @@ class NotesController extends Controller
      */
     public function index($id)
     {
+        //Récupère l'article dans lequel la note se trouve
         $article = Article::find($id);
         $notes = NoteArticle::where('article_id',$id)->get();
 
@@ -38,13 +39,14 @@ class NotesController extends Controller
      */
     public function store(Request $request,$id)
     {
-
+        //Requete d'insertion à l'aide des réponse du formulaire de la vue 'notes.blade.php'
         NoteArticle::create(['note' => $request->all()['note_article'], 'article_id'=>$id,"user_id" => Auth::user()->id ]);
+        //Création des Logs
         Log::create([
             "user_id" => Auth::user()->getAuthIdentifier(),
             "description" => " [CREATE] " .Auth::user()->nom. " a ajoutee une note : ". $request->note." à l'article ". $id,
         ]);
-
+        //Redirige sur la vue comportant l'uri /article
         return redirect("/article");
     }
 
@@ -61,10 +63,13 @@ class NotesController extends Controller
     {
         $input = $request->all();
 
+        //On récupère l'id de la note que l'on veut modif
         $idNote= NoteArticle::where('note', $input['note_article'])->get()[0]->id;
 
+        //Requete update
         NoteArticle::where('id', $idNote)->update(['note' => $input['NewNote']]);
 
+        //Redirige sur la vue précédente
         return redirect()->back();
     }
 
@@ -77,13 +82,19 @@ class NotesController extends Controller
     public function destroy(Request $request)
     {
         $input = $request->all();
+        //On récupère l'id de la note que l'on veut supprimer
         $idNote = NoteArticle::where('note', $input['deleteNote'])->get()[0]->id;
+
+        //Création des logs
         Log::create([
             "user_id" => Auth::user()->getAuthIdentifier(),
             "description" => " [DELETE] " .Auth::user()->nom. "a supprimé la note portant l'id : ". $idNote
         ]);
 
+        //On récupère la ligne que l'on veut supprimer grâce l'idNote
         $ligneNote = NoteArticle::find($idNote);
+
+        //Requete delete
         $ligneNote->delete();
 
         return redirect("/article");

@@ -11,12 +11,18 @@ class NoteArticle extends Model
     use HasFactory;
     use SoftDeletes;
     public $timestamps = true;
+    //Nom de table en bdds
     protected $table = 'notesArticle';
 
     protected $fillable = [
+        //Champs de bdd
         'id',
         'note',
         'article_id',
         'user_id'
     ];
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

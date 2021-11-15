@@ -31,73 +31,44 @@ Route::get('/dashboard', function () {
 /* Route N°3 */
 Route::get('/categorie', [CatégorieController::class, 'index'])->middleware(['auth'])->name('categorie');
 
- /* Route N°4 */
+/* Route AddCategorieController */
 Route::get('/categorie/addCateg',[AddCategorieController::class, 'index'])->name('addCateg');
-
- /* Route N°5 */
 Route::post('/categorie/addCateg', [AddCategorieController::class, 'store'])->name('categorie');
 
- /* Route N°6 */
+/* Route CatégorieController */
 Route::post('/categorie/editCateg/{id}',[CatégorieController::class, 'showCateg'])->name('showCateg');
-
- /* Route N°7 */
 Route::put('/categorie/editCateg/{id}',[CatégorieController::class, 'updateCateg'])->name('updateCateg');
-
- /* Route N°8 */
-Route::get('/article', [ArticleController::class, 'index'])->name('article');
-
- /* Route N°9 */
-Route::get('/article/{id}', [ArticleController::class, 'show'])->name('showArticle');
-
- /* Route N°10 */
- Route::get('/categorie/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');
-
- /* Route N°11 */
- Route::get('/logs', [LogsController::class, 'index'])->name('log');
-
- /* Route N°10 */
+Route::get('/categorie/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');
 Route::delete('/categorie/{id}', [CatégorieController::class, 'destroy'])->name('delete_categ');
+
+ /* Route LogsController */
+Route::get('/logs', [LogsController::class, 'index'])->name('log');
+
+
 
 require __DIR__.'/auth.php';
 
- /* Route N°12 */
- Route::get('/article/view/add', [ArticleController::class, 'indexAddArticle'])->name('addViewArticle');
-
- Route::get('/article/view/update', [ArticleController::class, 'indexUpdateArticle'])->name('updateViewArticle');
-
- Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('deleteViewArticle');
-
- Route::post('/article', [ArticleController::class, 'store'])->name('addArticle');
-
- /* Route N°13 */
- Route::post('/article/update', [ArticleController::class, 'update'])->name('article.update');
-
- /* Route N°13 */
-// Route::post('/article/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
-// require __DIR__.'/auth.php';
-
- /* Route N°13 */
- Route::get('/article/commentaire/{id}', [CommentaireController::class, 'index'])->name('commentaire.index');
-
- /* Route N°13 */
- Route::post('/article/commentaire/edit', [CommentaireController::class, 'update'])->name('commentaire.update');
-
- Route::post('/article/commentaire/delete', [CommentaireController::class, 'destroy'])->name('deleteCommentaire');
-
- /* Route N°13 */
- Route::post('/article/commentaire/{id}', [CommentaireController::class, 'store'])->name('addCommentaire');
+/* Route ArticleController */
+Route::get('/article', [ArticleController::class, 'index'])->name('article');
+Route::get('/article/{id}', [ArticleController::class, 'show'])->name('showArticle');
+Route::get('/article/view/add', [ArticleController::class, 'indexAddArticle'])->name('addViewArticle');
+Route::get('/article/view/update', [ArticleController::class, 'indexUpdateArticle'])->name('updateViewArticle');
+Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('deleteViewArticle');
+Route::post('/article', [ArticleController::class, 'store'])->name('addArticle');
+Route::post('/article/update', [ArticleController::class, 'update'])->name('article.update');
 
 
 
- /* Route N°13 */
- Route::get('/article/note/{id}', [NotesController::class, 'index'])->name('notes.index');
-
- /* Route N°13 */
- Route::post('/article/note/edit', [NotesController::class, 'update'])->name('note.update');
-
- Route::post('/article/note/delete', [NotesController::class, 'destroy'])->name('deleteNote');
- /* Route N°13 */
- Route::post('/article/note/{id}', [NotesController::class, 'store'])->name('addNote');
+/* Route CommentaireController */
+Route::get('/article/commentaire/{id}', [CommentaireController::class, 'index'])->name('commentaire.index');
+Route::post('/article/commentaire/edit', [CommentaireController::class, 'update'])->name('commentaire.update');
+Route::post('/article/commentaire/delete', [CommentaireController::class, 'destroy'])->name('deleteCommentaire');
+Route::post('/article/commentaire/{id}', [CommentaireController::class, 'store'])->name('addCommentaire');
 
 
-
+/* Route NotesController */
+//Route qui renvoie vers la fonction index
+Route::get('/article/note/{id}', [NotesController::class, 'index'])->name('notes.index');
+Route::post('/article/note/edit', [NotesController::class, 'update'])->name('note.update');
+Route::post('/article/note/delete', [NotesController::class, 'destroy'])->name('deleteNote');
+Route::post('/article/note/{id}', [NotesController::class, 'store'])->name('addNote');

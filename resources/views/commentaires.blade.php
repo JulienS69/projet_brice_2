@@ -68,8 +68,10 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
                             <h3 class="mb-5">Modification d'un commentaire</h3>
+                                {{--Formulaire de modif -> renvoie à la route intitulé 'commentaire.update'--}}
                                 <form class="col-10 justify-content-center text-center" action="{{ route('commentaire.update') }}" method="POST">
                                     @csrf
+                                    {{--Selection du commentaire que l'admin veut modifier--}}
                                     <select class="form-select" name="commentaireAncien">
                                         @foreach($commentaires as $commentaire)
                                             <option>{{ $commentaire->contenu}}</option>
@@ -79,7 +81,6 @@
                                     <textarea style="resize: none;height:300px;" class="text-center form-control" type="text" name="newContenu"></textarea>
                                     <button type="submit" class="mt-5  btn btn-warning">Modifier</button>
                                 </form>
-
                         </div>
                     </div>
                 </div>
@@ -91,6 +92,7 @@
                             <h3 class="mb-5">Suppression d'un commentaire</h3>
                             <form action="{{ route("deleteCommentaire") }}" method="post">
                                 @csrf
+                                {{--Selection du commentaire que l'admin veut supprimer--}}
                                 <select name="deleteCom" id="">
                                     @foreach($commentaires as $commentaire)
                                         <option value="{{$commentaire->contenu}}">{{$commentaire->contenu}}</option>
