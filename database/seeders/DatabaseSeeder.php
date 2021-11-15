@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
                 'nom' => 'Administrateur',
                 'prenom' => 'Brice',
                 'tel' => '0658595828',
-                'email' => 'b.cavelier@xefi.fr',
+                'email' => 'b.cavelier@admin.fr',
                 'password' => Hash::make('Xefi.2019'),
                 'admin' => true,
             ]
