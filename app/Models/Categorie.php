@@ -18,12 +18,13 @@ class Categorie extends Model
     protected $guarded = [];
 
 
-
+    // Fonction permettant de set le format de la date.
     public function setDateFormat($format)
     {
         $this->attributes['created_at'] = Carbon::createFromFormat('m/d/Y', $format)->format('d-m-Y');
     }
 
+    //Relation Belongs to Many, car une categorie peut avoir plusieurs articles et un article peut avoir plusieurs catégories.
     public function articles():BelongsToMany
     {
         return $this->belongsToMany(Article::class, "categorie_article");

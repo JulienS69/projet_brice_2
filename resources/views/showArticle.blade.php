@@ -49,7 +49,6 @@
                                 </div>
                                 <div class="card-footer text-center">
                                     <a href="{{route("commentaire.index",[$article->id])}}" style="font-weight: bold"> Écrire un commentaire ?<br></a>
-
                                 </div>
                                 <br>
                                 <div class="card">

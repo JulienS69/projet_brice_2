@@ -76,7 +76,7 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
                             <h3 class="mb-5" style="font-weight: bold">Modification de la note</h3>
-                            <h4 class="mb-5">(Avoir au moins une note)</h4>
+                            <h4 class="mb-5" style="color: red; font-weight: bold">(Fonction administrateur)</h4>
                                 <form class="col-10 justify-content-center text-center" action="{{ route('note.update') }}" method="POST">
                                 @csrf
                                     <label for="">Ancienne note</label>
@@ -111,7 +111,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
                         <h3 class="mb-5" style="font-weight: bold">Suppression d'un commentaire</h3>
-                        <h4 class="mb-5">(Avoir au moins un commentaire)</h4>
+                        <h4 class="mb-5" style="color: red; font-weight: bold">(Fonction administrateur)</h4>
                         <form action="{{ route("deleteNote") }}" method="post">
                             @csrf
                             <select name="deleteNote" id="">

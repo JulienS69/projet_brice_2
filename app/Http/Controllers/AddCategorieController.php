@@ -6,12 +6,9 @@ use App\Models\Categorie;
 use App\Models\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Model;
-use Exception;
 
 class AddCategorieController
 {
-
     public function index()
     {
         $id = Auth::user()->id;
@@ -20,6 +17,7 @@ class AddCategorieController
 
     public function store(Request $request)
     {
+//      Permet de récuperer le nom de la catégorie
         $test = Categorie::addSelect('nom')->get();
 //      Permet d'afficher un message d'erreur en cas de validation avec l'input vide.
         if ($request->input('nom') == '') {
@@ -29,7 +27,7 @@ class AddCategorieController
         else if ($request->input('nom') == $test){
             return back()->with('fail', 'Cette catégorie existe déjà !');
         }
-//       Création de la catégorie.
+//      Création de la catégorie.
         else {
             Categorie::create(['nom' => $request->nom, "user_id" => Auth::user()->id]);
             Log::create([
@@ -37,7 +35,7 @@ class AddCategorieController
                 "description" => " [CREATE] " .Auth::user()->nom. " a cree un article s'intitulant : ". $request->nom,
             ]);
         }
-//       Redirection vers la page des catégories.
+//      Redirection vers la page des catégories.
         return redirect('/categorie');
     }
 }

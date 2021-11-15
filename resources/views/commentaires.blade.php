@@ -68,7 +68,7 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
                             <h3 class="mb-5" style="font-weight: bold">Modification d'un commentaire</h3>
-                            <h4 class="mb-5">(Avoir au moins un commentaire existant)</h4>
+                            <h4 class="mb-5" style="color: red; font-weight: bold">(Fonction administrateur)</h4>
                                 {{--Formulaire de modif -> renvoie à la route intitulé 'commentaire.update'--}}
                                 <form class="col-10 justify-content-center text-center" action="{{ route('commentaire.update') }}" method="POST">
                                     @csrf
@@ -93,7 +93,7 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
                             <h3 class="mb-5" style="font-weight: bold">Suppression d'un commentaire</h3>
-                            <h4 class="mb-5">(Avoir au moins un commentaire existant)</h4>
+                            <h4 class="mb-5" style="color: red; font-weight: bold">(Fonction administrateur)</h4>
                             <form action="{{ route("deleteCommentaire") }}" method="post">
                                 @csrf
                                 {{--Selection du commentaire que l'admin veut supprimer--}}

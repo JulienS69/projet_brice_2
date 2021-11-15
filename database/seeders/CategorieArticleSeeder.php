@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 class CategorieArticleSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Ce seeder permet d'affecter aléatoirement des catégories aux articles envoyés dans la bdd.
      *
      * @return void
      */

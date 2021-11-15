@@ -23,6 +23,7 @@ class ContactController extends Controller
      */
     public function index()
     {
+        // retourne la vue contact.blade.php
         return view('contact');
     }
 

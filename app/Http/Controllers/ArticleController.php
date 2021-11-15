@@ -25,6 +25,7 @@ class ArticleController extends Controller
 
     public function show($id)
     {
+        //Permet d'afficher dans la vue d'un article, les commentaires ainsi que les notes en plus des informations de l'article.
         $article = Article::find($id);
         $commentaires = Commentaires::where('article_id',$id)->get();
         $notes = NoteArticle::where('article_id',$id)->get();
@@ -35,12 +36,14 @@ class ArticleController extends Controller
     public function store(Request $request){
         $createArticle = Article::create(['titre' => $request->nom, "user_id" => Auth::user()->id, 'libelle'=>$request->libelle]);
         $createArticle->categories()->attach($request->categorie);
+
+        // Log permetant de voir qui a créé l'article ainsi que le nom de l'article.
             Log::create([
                 "user_id" => Auth::user()->getAuthIdentifier(),
                 "description" => " [CREATE] " .Auth::user()->nom. " a cree un article s'intitulant : ". $request->nom,
             ]);
-//        }
-//       Redirection vers la page des catégories.
+
+//     Redirection vers la page des catégories.
         return redirect('/article');
     }
 
@@ -52,6 +55,7 @@ class ArticleController extends Controller
     }
 
     public function indexUpdateArticle(){
+
         $article = Article::addSelect(['articles.id', 'titre', 'articles.created_at'])
             ->get();
 
@@ -61,12 +65,12 @@ class ArticleController extends Controller
     public function destroy(Request $request, $id){
         $article = Article::addSelect(['articles.id', 'titre', 'articles.created_at'])
             ->get();
+        // Permet de supprimer les articles liée à une catégorier qui va être supprimée
         $task = Article::findOrFail($id);
         $article = Article::addSelect('titre')
             ->first();
 
-//        dd($article);
-
+        //Récupère le titre de l'article qui correspond à l'id récupérer dans l'url afin de pouvoir le supprimer
         $nomArticle = Article::addSelect('titre')
             ->where('id', $task)
             ->first();
@@ -80,10 +84,7 @@ class ArticleController extends Controller
 
     public function update(Request $requete)
     {
-//        $article = Article::addSelect('titre')
-//            ->where('titre', $input['article'])
-//            ->get();
-
+        // Cette fonction permet d'update l'article en fonction des champs saisie dans nos inputs depuis notre vue.
         $input = $requete->all();
         if ($input['nouveauNom'] != null) {
             Article::where('titre', $input['article'])->update(['titre' => $input['nouveauNom'], 'libelle' => $input['newDescription']]);
@@ -99,6 +100,7 @@ class ArticleController extends Controller
             "description" => " [UPDATE] " .Auth::user()->nom. " a modifié l'article s'intitulant : ".  $ancienNom. " par : ". $nouveauNom,
         ]);
 
+        // redirige vers la vue des articles.
         return redirect("/article");
     }
 

@@ -18,17 +18,18 @@ class Article extends Model
     protected $table = 'articles';
     protected $guarded = [];
 
-//Relation Belongs to Many entre Categorie et article
+    //Relation Belongs to Many, car une categorie peut avoir plusieurs articles et un article peut avoir plusieurs catégories.
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Categorie::class, "categorie_article");
     }
-
+    //Relation Belongs to entre User et article
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    //Relation Belongs to entre notes et article
     public function notes(): HasMany
     {
         return $this->hasMany(NotesArticle::class, "id");
