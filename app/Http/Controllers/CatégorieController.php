@@ -20,11 +20,14 @@ class CatégorieController extends Controller
     public function destroy($id){
         $task = Categorie::findOrFail($id);
 
-        $nomCatef = Categorie::addSelect('nom')
+        foreach ($task->articles as $article){
+            $article->delete();
+        }
+
+        Categorie::addSelect('nom')
         ->where('id', $task)
             ->first();
         $task->delete();
-
 
         Log::create([
             "user_id" => Auth::user()->getAuthIdentifier(),
