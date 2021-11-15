@@ -67,7 +67,8 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
-                            <h3 class="mb-5">Modification d'un commentaire</h3>
+                            <h3 class="mb-5" style="font-weight: bold">Modification d'un commentaire</h3>
+                            <h4 class="mb-5">(Avoir au moins un commentaire existant)</h4>
                                 {{--Formulaire de modif -> renvoie à la route intitulé 'commentaire.update'--}}
                                 <form class="col-10 justify-content-center text-center" action="{{ route('commentaire.update') }}" method="POST">
                                     @csrf
@@ -79,7 +80,9 @@
                                     </select>
                                     <label class="mt-5" for="price">Nouveau contenu :</label>
                                     <textarea style="resize: none;height:300px;" class="text-center form-control" type="text" name="newContenu"></textarea>
-                                    <button type="submit" class="mt-5  btn btn-warning">Modifier</button>
+                                    <button type="submit" class="mt-5  btn btn-warning" style="background-color: limegreen">
+                                        Modifier
+                                    </button>
                                 </form>
                         </div>
                     </div>
@@ -89,7 +92,8 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
-                            <h3 class="mb-5">Suppression d'un commentaire</h3>
+                            <h3 class="mb-5" style="font-weight: bold">Suppression d'un commentaire</h3>
+                            <h4 class="mb-5">(Avoir au moins un commentaire existant)</h4>
                             <form action="{{ route("deleteCommentaire") }}" method="post">
                                 @csrf
                                 {{--Selection du commentaire que l'admin veut supprimer--}}
@@ -98,7 +102,9 @@
                                         <option value="{{$commentaire->contenu}}">{{$commentaire->contenu}}</option>
                                      @endforeach
                                 </select><br>
-                                <button type="submit" class="mt-5  btn btn-warning">Supprimer</button>
+                                <button type="submit" class="mt-5  btn btn-warning" style="background-color: limegreen">
+                                    Supprimer
+                                </button>
                             </form>
                         </div>
                     </div>

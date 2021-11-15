@@ -20,7 +20,7 @@ class NotesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index($id)
     {
@@ -35,7 +35,7 @@ class NotesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Application|\Illuminate\Routing\Redirector|RedirectResponse
      */
     public function store(Request $request,$id)
     {
@@ -44,7 +44,7 @@ class NotesController extends Controller
         //Création des Logs
         Log::create([
             "user_id" => Auth::user()->getAuthIdentifier(),
-            "description" => " [CREATE] " .Auth::user()->nom. " a ajoutee une note : ". $request->note." à l'article ". $id,
+            "description" => " [CREATE] " .Auth::user()->nom. " a ajoutee une note ". $request->note." à l'article ". $id,
         ]);
         //Redirige sur la vue comportant l'uri /article
         return redirect("/article");
@@ -57,7 +57,7 @@ class NotesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Application|\Illuminate\Routing\Redirector|RedirectResponse
      */
     public function update(Request $request)
     {
@@ -70,14 +70,14 @@ class NotesController extends Controller
         NoteArticle::where('id', $idNote)->update(['note' => $input['NewNote']]);
 
         //Redirige sur la vue précédente
-        return redirect()->back();
+        return redirect("/article");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Application|\Illuminate\Routing\Redirector|RedirectResponse
      */
     public function destroy(Request $request)
     {

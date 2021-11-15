@@ -75,7 +75,8 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
-                            <h3 class="mb-5">Modification d'un article</h3>
+                            <h3 class="mb-5" style="font-weight: bold">Modification de la note</h3>
+                            <h4 class="mb-5">(Avoir au moins une note)</h4>
                                 <form class="col-10 justify-content-center text-center" action="{{ route('note.update') }}" method="POST">
                                 @csrf
                                     <label for="">Ancienne note</label>
@@ -97,7 +98,9 @@
                                         <option value="9">9/10</option>
                                         <option value="10">10/10</option>
                                     </select><br>
-                                <button type="submit" class="mt-5  btn btn-warning">Modifier</button>
+                                    <button type="submit" class="mt-5  btn btn-warning" style="background-color: limegreen">
+                                        Modifier
+                                    </button>
                             </form>
                         </div>
                     </div>
@@ -107,7 +110,8 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200 text-center row justify-content-center">
-                        <h3 class="mb-5">Suppression d'un commentaire</h3>
+                        <h3 class="mb-5" style="font-weight: bold">Suppression d'un commentaire</h3>
+                        <h4 class="mb-5">(Avoir au moins un commentaire)</h4>
                         <form action="{{ route("deleteNote") }}" method="post">
                             @csrf
                             <select name="deleteNote" id="">
@@ -115,7 +119,9 @@
                                     <option value="{{$note->note}}">{{$note->note}}</option>
                                 @endforeach
                             </select><br>
-                            <button type="submit" class="mt-5  btn btn-warning">Supprimer</button>
+                            <button type="submit" class="mt-5  btn btn-warning" style="background-color: limegreen">
+                                Supprimer
+                            </button>
                         </form>
                     </div>
                 </div>

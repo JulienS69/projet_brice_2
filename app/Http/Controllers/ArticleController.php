@@ -25,16 +25,9 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-
-//        $article = Article::find($id)->with("user");
         $article = Article::find($id);
         $commentaires = Commentaires::where('article_id',$id)->get();
         $notes = NoteArticle::where('article_id',$id)->get();
-
-//        $article = Article::where("id",$id)->with("user")->first();
-//        $id = Article::addSelect('id')
-//            ->where('id', $idArticle)
-//            ->get();
 
         return view('showArticle', compact(["article", "commentaires","notes"]));
     }

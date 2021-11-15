@@ -28,14 +28,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-/* Route N°3 */
-Route::get('/categorie', [CatégorieController::class, 'index'])->middleware(['auth'])->name('categorie');
-
 /* Route AddCategorieController */
 Route::get('/categorie/addCateg',[AddCategorieController::class, 'index'])->name('addCateg');
 Route::post('/categorie/addCateg', [AddCategorieController::class, 'store'])->name('categorie');
 
 /* Route CatégorieController */
+ Route::get('/categorie', [CatégorieController::class, 'index'])->middleware(['auth'])->name('categorie');
 Route::post('/categorie/editCateg/{id}',[CatégorieController::class, 'showCateg'])->name('showCateg');
 Route::put('/categorie/editCateg/{id}',[CatégorieController::class, 'updateCateg'])->name('updateCateg');
 Route::get('/categorie/{id}', [CatégorieController::class, 'showArticleFromCateg'])->name('showArticleFromCateg');

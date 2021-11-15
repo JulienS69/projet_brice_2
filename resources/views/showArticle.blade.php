@@ -30,7 +30,6 @@
                                 <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12"
                                      style="min-width:300px;min-height:300px;">
                                     <div class="row">
-{{--                                        <h5 style="font-weight: bold">{{$article->titre}}</h5>--}}
                                         <br> <br>
                                         <h3 style="font-weight: bold;">Contenu de l'article : </h3>
                                         <br>
@@ -49,7 +48,7 @@
                                     </ul>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="{{route("commentaire.index",[$article->id])}}"> Écrire un commentaire ?<br></a>
+                                    <a href="{{route("commentaire.index",[$article->id])}}" style="font-weight: bold"> Écrire un commentaire ?<br></a>
 
                                 </div>
                                 <br>
@@ -58,15 +57,14 @@
                                     <br>
                                     <ul>
                                         @foreach( $notes as $note)
-                                            <li>utilisateur: {{$note->user->nom}} a noté : {{$note->note}}/10</li>
+                                            <li> {{$note->user->nom}} a noté : {{$note->note}}/10</li>
                                         @endforeach
                                     </ul>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="{{route("notes.index",[$article->id])}}"> Noté l'article ?<br></a>
+                                    <a href="{{route("notes.index",[$article->id])}}" style="font-weight: bold"> Noté l'article ?<br></a>
                                 </div>
                                 <br>
-
                                 <script
                                     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
                             </div>

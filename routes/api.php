@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+//Route API (Test fonctionnel sur Postman)
 Route::get('/categorie', function(){$json=Categorie::with("articles")->get(); return response()->json($json);});
