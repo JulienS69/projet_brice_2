@@ -427,8 +427,7 @@
         </div>
         <div class="text-box">
             @else
-                <a href="{{ route('login') }}" class="btn btn-white btn-animate" style="margin-left: 25px;
-                    margin-top: -1vh;">Se connecter</a>
+                <a href="{{ route('login') }}" class="btn btn-white btn-animate" style="margin-left: 25px;">Se connecter</a>
         </div>
         @if (Route::has('register'))
             <div class="text-box1">
