@@ -29,12 +29,13 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $commentaires = Commentaires::where('article_id',$id)->get();
 
+
 //        $article = Article::where("id",$id)->with("user")->first();
 //        $id = Article::addSelect('id')
 //            ->where('id', $idArticle)
 //            ->get();
 
-        return view('showArticle', compact(["article", "commentaires"]));
+        return view('showArticle', compact(["article", "commentaires", "test"]));
     }
 
     public function store(Request $request){

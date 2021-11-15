@@ -44,7 +44,7 @@
                                     <br>
                                     <ul>
                                         @foreach($commentaires as $commentaire)
-                                            <li>{{Auth::user()->nom}}: {{$commentaire->contenu}}</li>
+                                            <li>{{$commentaire->user->nom}}: {{$commentaire->contenu}}</li>
                                         @endforeach
                                     </ul>
                                 </div>
