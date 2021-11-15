@@ -52,9 +52,6 @@ class CatégorieController extends Controller
 
     public function showArticleFromCateg(Request $request, $id){
             $article = Categorie::find($id)->articles;
-            dd($article);
-//            $article = Article::all()->where('categorie_id', $id);
-//            dd($article);
             return view('article', compact("article"));
     }
 }
