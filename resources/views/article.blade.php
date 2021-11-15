@@ -47,7 +47,7 @@
                                             @endforeach
 {{--                                            <td class="text-truncate" style="max-width: 200px;">{{$unArticle->categories[0]->nom}}</td>--}}
                                             <td class="text-truncate" style="max-width: 200px;">{{$unArticle->created_at->format("d/m/Y")}}</td>
-                                            <td class="text-truncate" style="max-width: 200px;"><a href="{{ route('showArticle', [$unArticle->id]) }}">Cliquez ici pour en savoir plus</a></td>
+                                            <td class="text-truncate" style="max-width: 200px;"><a href="{{ route('showArticle', [$unArticle->id]) }}">Cliquez ici pour lire l'article</a></td>
                                             @if(Auth::user()->admin)
                                                 <td class="text-center"><a class="btn" href="{{ route('addViewArticle') }}"><i class="fa fa-plus-circle"></i></a></td>
                                                 <form action="{{ route("deleteViewArticle", ["id" => $unArticle->id]) }}" method="post">
